@@ -4,7 +4,7 @@ Your personal dev-oriented **Linktree killer** — built using **React + Vite + 
 Showcase your GitHub, LinkedIn, Discord, Portfolio, and whatever else you want — **with full control**, no limits, no paywalls.
 
 > Built by [@Yash-pluto](https://github.com/yashvardhan3105) aka **Pluto**  
-> _Linktree is dead. Long live Shadowlinks._ ☠️
+> _Long live Shadowlinks._ ☠️
 
 ---
 
