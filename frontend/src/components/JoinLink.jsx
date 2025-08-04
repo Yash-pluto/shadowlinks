@@ -2,14 +2,14 @@ import React, { useEffect, useState, useRef } from "react";
 import LogoIcon from "../assets/link.svg";
 import axios from "axios";
 import { io } from "socket.io-client";
+import formatNumber from "../utils/formatNumber";
 
 const JoinMe = () => {
   const IP = "http://192.168.1.9:5000";
-  const [starCount, setStarCount] = useState(null); // Start with null so we know it's not loaded
+  const [starCount, setStarCount] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const socketRef = useRef(null);
 
-  // Fetch initial count from backend
   useEffect(() => {
     const fetchStars = async () => {
       try {
@@ -23,7 +23,6 @@ const JoinMe = () => {
     fetchStars();
   }, []);
 
-  // Socket live updates
   useEffect(() => {
     socketRef.current = io(`${IP}`);
 
@@ -62,7 +61,7 @@ const JoinMe = () => {
           className='flex items-center gap-1 cursor-pointer hover:text-pink-300 transition'
           onClick={handleStarClick}
         >
-          · 🩷 {starCount !== null ? starCount : "Loading..."}
+          · 🩷 {starCount !== null ? formatNumber(starCount) : "Loading..."}
         </span>
       </div>
     </div>

@@ -118,6 +118,6 @@ export const socialLinks = [
     name: "Website",
     url: "https://yashpluto.vercel.app/",
     icon: WebsiteIcon,
-    show: true,
+    show: false,
   },
 ];
