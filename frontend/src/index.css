@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-hellishText;
+  }
+}
+
+* {
+  margin: 0;
+}
+
+:root {
+  --link-gap: 1.5rem; /* or whatever size */
+}
