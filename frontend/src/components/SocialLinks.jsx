@@ -10,7 +10,7 @@ const SocialLinks = () => {
   };
 
   return (
-    <div className=' flex flex-col gap-3 py-4 px-[14px] sm:px-[28px]'>
+    <div className='w-full max-w-[580px] flex flex-col gap-3 py-4 px-4 sm:px-[28px] mx-auto'>
       {socialLinks
         .filter((link) => link.show)
         .map((link) => (
