@@ -19,6 +19,7 @@ body {
 
 :root {
   --link-gap: 1.5rem;
+  background-color: #0a0a0a;
 }
 
 .shine-hover {
@@ -64,4 +65,27 @@ body {
   .shine-hover::after {
     display: none !important;
   }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fadeInOut {
+  animation: fadeInOut 1.5s ease-in-out forwards;
 }

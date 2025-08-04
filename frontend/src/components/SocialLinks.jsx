@@ -39,7 +39,7 @@ const SocialLinks = () => {
                 <img
                   src={ShareIcon}
                   alt='Share icon'
-                  className='w-4 h-4 invert opacity-80'
+                  className='w-7 h-7 invert opacity-80'
                 />
               </div>
             </a>

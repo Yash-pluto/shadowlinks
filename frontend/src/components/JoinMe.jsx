@@ -2,14 +2,15 @@ import React, { useEffect, useState, useRef } from "react";
 import LogoIcon from "../assets/link.svg";
 import axios from "axios";
 import { io } from "socket.io-client";
+import formatNumber from "../utils/formatNumber";
 
 const JoinMe = () => {
   const IP = "http://192.168.1.9:5000";
-  const [starCount, setStarCount] = useState(null); // Start with null so we know it's not loaded
+  const [starCount, setStarCount] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const socketRef = useRef(null);
+  const message = encodeURIComponent("Hey Pluto, I want a Shadowlink 💀");
 
-  // Fetch initial count from backend
   useEffect(() => {
     const fetchStars = async () => {
       try {
@@ -23,7 +24,6 @@ const JoinMe = () => {
     fetchStars();
   }, []);
 
-  // Socket live updates
   useEffect(() => {
     socketRef.current = io(`${IP}`);
 
@@ -48,8 +48,13 @@ const JoinMe = () => {
   };
 
   return (
-    <div className='flex flex-col items-center mt-6 px-4 text-white pb-[24px] overflow-x-hidden'>
-      <button className='flex items-center gap-2 bg-white text-black px-5 py-3 rounded-full shadow-md hover:scale-105 transition-transform'>
+    <div className='flex z-50 flex-col items-center mt-6 px-4 text-white pb-[24px] overflow-x-hidden'>
+      <button
+        onClick={() =>
+          window.open(`https://wa.me/919204592139?text=${message}`, "_blank")
+        }
+        className='flex items-center gap-2 bg-white text-black px-5 py-3 rounded-full shadow-md hover:scale-105 transition-transform'
+      >
         <img src={LogoIcon} alt='Join Logo' className='w-7 h-7' />
         <span className='font-semibold text-[16px]'>
           Join Yash Pluto on Shadowlinks
@@ -62,7 +67,7 @@ const JoinMe = () => {
           className='flex items-center gap-1 cursor-pointer hover:text-pink-300 transition'
           onClick={handleStarClick}
         >
-          · 🩷 {starCount !== null ? starCount : "Loading..."}
+          · 🩷 {starCount !== null ? formatNumber(starCount) : "Loading..."}
         </span>
       </div>
     </div>
