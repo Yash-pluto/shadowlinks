@@ -23,7 +23,7 @@ Showcase your GitHub, LinkedIn, Discord, Portfolio, and whatever else you want â
 ## ðŸš€ Getting Started
 
 ```bash
-git clone https://github.com/yashvardhan3105/shadowlinks.git
+git clone https://github.com/Yash-pluto/shadowlinks.git
 cd shadowlinks
 npm install
 npm run dev
