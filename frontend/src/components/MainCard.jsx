@@ -3,6 +3,7 @@ import TopLinks from "./TopLinks.jsx";
 import Avatar from "./Avatar.jsx";
 import YourHandle from "./YourHandle.jsx";
 import SocialLinks from "./SocialLinks.jsx";
+import JoinLink from "./JoinLink.jsx";
 
 const MainCard = () => {
   return (
@@ -12,15 +13,8 @@ const MainCard = () => {
           <TopLinks />
           <Avatar />
           <YourHandle />
-        </div>
-        <div
-          className='flex flex-col gap-3 shadow-lg rounded-2xl'
-          style={{
-            paddingLeft: "var(--link-gap)",
-            paddingRight: "var(--link-gap)",
-          }}
-        >
           <SocialLinks />
+          <JoinLink />
         </div>
       </div>
     </>
