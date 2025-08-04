@@ -24,10 +24,9 @@
 .shine-hover {
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid #2a2a2a;
-  box-shadow: 0 0 15px #2a2a2a;
   transition: backdrop-filter 0.3s ease;
   width: 524px;
   height: 64px;
@@ -49,7 +48,7 @@
   opacity: 0.2;
   transform: rotate(35deg);
   z-index: 1;
-  transition: all 1000ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 2000ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .shine-hover:hover::after {

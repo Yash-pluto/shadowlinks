@@ -10,34 +10,31 @@ const SocialLinks = () => {
   };
 
   return (
-    <div className='flex flex-col gap-3 py-4'>
+    <div className=' flex flex-col gap-3 py-4 px-[14px] sm:px-[28px]'>
       {socialLinks
         .filter((link) => link.show)
         .map((link) => (
-          <div
-            key={link.id}
-            className='relative w-full group overflow-hidden rounded-xl'
-          >
+          <div key={link.id} className='relative w-full group rounded-xl'>
             <a
               href={link.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='shadow-[inset_0_0_10px_rgba(255,255,255,0.1)] shine-hover relative z-10 flex items-center justify-center gap-3 px-6 py-4 rounded-xl text-base bg-hellishLight text-hellishText border border-hellishBorder transition duration-200 hover:shadow-[0_0_12px_rgba(255,255,255,0.1)]'
+              className='shine-hover relative z-10 flex items-center justify-center w-full max-w-[95%] sm:max-w-[480px] mx-auto rounded-xl text-base bg-hellishLight text-hellishText border border-hellishBorder transition-all duration-300 ease-in-out'
             >
               {/* Icon + Label */}
               <div className='flex items-center justify-center gap-3'>
                 <img
                   src={link.icon}
                   alt={`${link.name} icon`}
-                  className='w-5 h-5 invert'
+                  className='w-7 h-7 invert'
                 />
-                <span className='font-medium text-center'>{link.name}</span>
+                <span className='font-medium text-[16px]'>{link.name}</span>
               </div>
 
               {/* Share Button */}
               <div
                 onClick={(e) => handleShareClick(e, link)}
-                className='absolute right-4 top-1/2 -translate-y-1/2 p-1 cursor-pointer z-20 hover:scale-110 transition-transform'
+                className='absolute right-3 top-1/2 -translate-y-1/2 p-1 cursor-pointer z-20 hover:scale-110 transition-transform'
               >
                 <img
                   src={ShareIcon}
