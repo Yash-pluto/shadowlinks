@@ -74,9 +74,9 @@ export const socialLinks = [
   {
     id: 9,
     name: "Spotify",
-    url: "https://open.spotify.com/user/",
+    url: "https://open.spotify.com/user/31gjp3c2krluupxi2gq57nqoj4gi?si=5a851625b37e46c4",
     icon: SpotifyIcon,
-    show: false,
+    show: true,
   },
   {
     id: 10,
@@ -109,7 +109,7 @@ export const socialLinks = [
   {
     id: 14,
     name: "YouTube",
-    url: "https://youtube.com/@",
+    url: "https://youtube.com/",
     icon: YouTubeIcon,
     show: false,
   },

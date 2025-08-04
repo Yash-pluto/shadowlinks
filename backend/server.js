@@ -3,14 +3,13 @@ const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
-const Star = require("./models/Star"); // ✅ THIS LINE
+const Star = require("./models/Star");
 require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Create HTTP server
 const server = http.createServer(app);
 
 mongoose
@@ -21,26 +20,22 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB error:", err));
 
-// Setup Socket.IO server
 const io = new Server(server, {
   cors: {
-    origin: "*", // your frontend port
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
 
-// Socket.IO connection event
 io.on("connection", async (socket) => {
   console.log("⚡ A user connected");
 
   try {
-    // Check if a star doc exists, else create one
     let starDoc = await Star.findOne();
     if (!starDoc) {
       starDoc = await Star.create({ count: 0 });
     }
 
-    // Send current count to client
     socket.emit("starCount", starDoc.count);
   } catch (err) {
     console.error("❌ Error sending star count:", err);
@@ -51,7 +46,6 @@ io.on("connection", async (socket) => {
   });
 });
 
-// API to increment stars
 app.post("/api/stars", async (req, res) => {
   try {
     let starDoc = await Star.findOne();
@@ -62,7 +56,7 @@ app.post("/api/stars", async (req, res) => {
       await starDoc.save();
     }
 
-    io.emit("starCount", starDoc.count); // broadcast new count
+    io.emit("starCount", starDoc.count);
     res.json({ count: starDoc.count });
   } catch (err) {
     console.error("❌ Error updating stars:", err);
@@ -70,7 +64,6 @@ app.post("/api/stars", async (req, res) => {
   }
 });
 
-// API to get star count manually
 app.get("/api/stars", async (req, res) => {
   try {
     const starDoc = await Star.findOne();
@@ -81,5 +74,4 @@ app.get("/api/stars", async (req, res) => {
   }
 });
 
-// Start server
 server.listen(5000, () => console.log("🔥 Backend running on port 5000"));

@@ -9,6 +9,7 @@ const JoinMe = () => {
   const [starCount, setStarCount] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const socketRef = useRef(null);
+  const message = encodeURIComponent("Hey Pluto, I want a Shadowlink 💀");
 
   useEffect(() => {
     const fetchStars = async () => {
@@ -47,8 +48,13 @@ const JoinMe = () => {
   };
 
   return (
-    <div className='flex flex-col items-center mt-6 px-4 text-white pb-[24px] overflow-x-hidden'>
-      <button className='flex items-center gap-2 bg-white text-black px-5 py-3 rounded-full shadow-md hover:scale-105 transition-transform'>
+    <div className='flex z-50 flex-col items-center mt-6 px-4 text-white pb-[24px] overflow-x-hidden'>
+      <button
+        onClick={() =>
+          window.open(`https://wa.me/919204592139?text=${message}`, "_blank")
+        }
+        className='flex items-center gap-2 bg-white text-black px-5 py-3 rounded-full shadow-md hover:scale-105 transition-transform'
+      >
         <img src={LogoIcon} alt='Join Logo' className='w-7 h-7' />
         <span className='font-semibold text-[16px]'>
           Join Yash Pluto on Shadowlinks
