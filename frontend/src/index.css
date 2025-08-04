@@ -54,3 +54,9 @@
 .shine-hover:hover::after {
   left: 120%;
 }
+
+@media (max-width: 639px) {
+  .shine-hover::after {
+    display: none !important;
+  }
+}
