@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const starSchema = new mongoose.Schema({
   count: {
@@ -7,4 +7,6 @@ const starSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Star", starSchema);
+const Star = mongoose.model("Star", starSchema);
+
+export default Star;
