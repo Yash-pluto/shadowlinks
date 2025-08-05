@@ -79,7 +79,13 @@ const JoinMe = () => {
       </button>
 
       <div className='mt-3 text-m text-neutral-400 flex gap-4 items-center'>
-        <span className='hover:underline cursor-pointer'>· Resume</span>
+        <a
+          href='/YashResume.pdf'
+          download
+          className='hover:underline cursor-pointer'
+        >
+          · Resume
+        </a>
         <span
           className='flex items-center gap-1 cursor-pointer hover:text-pink-300 transition'
           onClick={handleStarClick}
