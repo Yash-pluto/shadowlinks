@@ -6,12 +6,13 @@ import LinkedInIcon from "../assets/SVGIcons/linkedin.svg";
 import SnapchatIcon from "../assets/SVGIcons/snapchat.svg";
 import MailIcon from "../assets/SVGIcons/email.svg";
 import LinkIcon from "../assets/link.svg";
-import Pfp from "../assets/ProfilePic.jpg";
+import Pfp from "../assets/temp.jpg";
 
 const SharePopup = ({ onClose, onCopyLink, minimal = false, link = null }) => {
-  const shareURL = "https://shadowlinks.vercel.app";
+  const shareURL = link?.url || "https://shadowlinks.vercel.app";
   const message = encodeURIComponent("Hey Pluto, I want a Shadowlink 💀");
   const [showCopiedAlert, setShowCopiedAlert] = useState(false);
+  const [showSnapchatAlert, setShowSnapchatAlert] = useState(false);
 
   const shareButtons = [
     {
@@ -35,7 +36,9 @@ const SharePopup = ({ onClose, onCopyLink, minimal = false, link = null }) => {
       icon: TwitterIcon,
       onClick: () =>
         window.open(
-          `https://twitter.com/intent/tweet?url=${shareURL}`,
+          `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+            shareURL
+          )}`,
           "_blank"
         ),
     },
@@ -43,28 +46,36 @@ const SharePopup = ({ onClose, onCopyLink, minimal = false, link = null }) => {
       name: "WhatsApp",
       icon: WhatsAppIcon,
       onClick: () =>
-        window.open(`https://api.whatsapp.com/send?text=${shareURL}`, "_blank"),
+        window.open(
+          `https://api.whatsapp.com/send?text=${encodeURIComponent(shareURL)}`,
+          "_blank"
+        ),
     },
     {
       name: "LinkedIn",
       icon: LinkedInIcon,
       onClick: () =>
         window.open(
-          `https://www.linkedin.com/sharing/share-offsite/?url=${shareURL}`,
+          `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+            shareURL
+          )}`,
           "_blank"
         ),
     },
     {
       name: "Snapchat",
       icon: SnapchatIcon,
-      onClick: () => alert("Snapchat web sharing isn't supported directly 🥲"),
+      onClick: () => {
+        setShowSnapchatAlert(true);
+        setTimeout(() => setShowSnapchatAlert(false), 1500);
+      },
     },
     {
       name: "Email",
       icon: MailIcon,
       onClick: () =>
         window.open(
-          `mailto:?subject=Check this out&body=${shareURL}`,
+          `mailto:?subject=Check this out&body=${encodeURIComponent(shareURL)}`,
           "_blank"
         ),
     },
@@ -75,6 +86,11 @@ const SharePopup = ({ onClose, onCopyLink, minimal = false, link = null }) => {
       {showCopiedAlert && (
         <div className='fixed bottom-8 -translate-x-1/2 z-50 bg-hellishDark text-white px-6 py-3 rounded-full shadow-lg animate-fadeInOut text-sm font-medium tracking-wide'>
           ✅ Link Copied to Clipboard
+        </div>
+      )}
+      {showSnapchatAlert && (
+        <div className='fixed bottom-8 -translate-x-1/2 z-50 bg-hellishDark text-white px-6 py-3 rounded-full shadow-lg animate-fadeInOut text-sm font-medium tracking-wide'>
+          Snapchat web sharing isn't supported directly 🥲
         </div>
       )}
 
