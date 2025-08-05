@@ -5,12 +5,26 @@ import { io } from "socket.io-client";
 import formatNumber from "../utils/formatNumber";
 
 const JoinMe = () => {
-  const IP = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
-
+  const IP = import.meta.env.VITE_BACKEND_URL;
   const [starCount, setStarCount] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const socketRef = useRef(null);
   const message = encodeURIComponent("Hey Pluto, I want a Shadowlink 💀");
+
+  useEffect(() => {
+    const fetchStars = async () => {
+      console.log("🌐 Fetching stars from:", `${IP}/api/stars`);
+      try {
+        const res = await axios.get(`${IP}/api/stars`);
+        console.log("✅ Stars fetched:", res.data);
+        setStarCount(res.data.count);
+      } catch (err) {
+        console.error("❌ Error fetching stars:", err);
+      }
+    };
+
+    fetchStars();
+  }, []);
 
   useEffect(() => {
     const fetchStars = async () => {

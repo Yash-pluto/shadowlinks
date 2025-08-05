@@ -1,10 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const http = require("http");
-const { Server } = require("socket.io");
-const mongoose = require("mongoose");
-const Star = require("./models/Star");
-require("dotenv").config();
+import express from "express";
+import cors from "cors";
+import http from "http";
+import { Server } from "socket.io";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import Star from "./models/Star.js";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
