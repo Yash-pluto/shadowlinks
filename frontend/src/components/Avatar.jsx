@@ -1,5 +1,5 @@
 import React from "react";
-import ProfilePic from "../assets/ProfilePic.jpg";
+import ProfilePic from "../assets/temp.jpg";
 import FireDecoration from "../assets/AVdecoration/fire.png";
 
 const Avatar = () => {
