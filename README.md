@@ -84,7 +84,7 @@ export const links = [
 ---
 
 ## 📡 Live URL
-https://yashpluto.vercel.app
+https://shadowlinks.vercel.app
 
 ---
 
