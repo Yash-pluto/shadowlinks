@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ShareIcon from "../assets/shareicon.svg";
 import LogoIcon from "../assets/link.svg";
-import SharePopup from "./SharePopup"; // 🆕
+import SharePopup from "./SharePopup";
 
 const TopLinks = () => {
   const [showPopup, setShowPopup] = useState(false);

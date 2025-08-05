@@ -9,7 +9,7 @@ const SocialLinks = () => {
   const handleShareClick = (e, link) => {
     e.preventDefault();
     e.stopPropagation();
-    setSelectedLink(link); // open the popup
+    setSelectedLink(link);
   };
 
   const closePopup = () => setSelectedLink(null);
