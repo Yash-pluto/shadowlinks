@@ -5,7 +5,8 @@ import { io } from "socket.io-client";
 import formatNumber from "../utils/formatNumber";
 
 const JoinMe = () => {
-  const IP = "http://192.168.1.9:5000";
+  const IP = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
   const [starCount, setStarCount] = useState(null);
   const [isClicked, setIsClicked] = useState(false);
   const socketRef = useRef(null);
@@ -25,7 +26,9 @@ const JoinMe = () => {
   }, []);
 
   useEffect(() => {
-    socketRef.current = io(`${IP}`);
+    socketRef.current = io(IP, {
+      transports: ["websocket"],
+    });
 
     socketRef.current.on("starCount", (newCount) => {
       setStarCount(newCount);

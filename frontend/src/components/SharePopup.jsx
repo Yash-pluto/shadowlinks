@@ -8,17 +8,25 @@ import MailIcon from "../assets/SVGIcons/email.svg";
 import LinkIcon from "../assets/link.svg";
 import Pfp from "../assets/ProfilePic.jpg";
 
-const SharePopup = ({ onClose, onCopyLink }) => {
+const SharePopup = ({ onClose, onCopyLink, minimal = false, link = null }) => {
   const shareURL = "https://shadowlinks.vercel.app";
   const message = encodeURIComponent("Hey Pluto, I want a Shadowlink 💀");
   const [showCopiedAlert, setShowCopiedAlert] = useState(false);
+
   const shareButtons = [
     {
       name: "Copy",
       icon: CopyIcon,
       onClick: () => {
-        onCopyLink?.();
-        setShowCopiedAlert(true);
+        navigator.clipboard
+          .writeText(link?.url || shareURL)
+          .then(() => {
+            setShowCopiedAlert(true);
+            setTimeout(() => setShowCopiedAlert(false), 1500);
+          })
+          .catch((err) => {
+            console.error("❌ Clipboard copy failed:", err);
+          });
         setTimeout(() => setShowCopiedAlert(false), 1500);
       },
     },
@@ -63,17 +71,18 @@ const SharePopup = ({ onClose, onCopyLink }) => {
   ];
 
   return (
-    <div className='fixed top-[6rem] max-h-full h-full items-stretch sm:items-center  sm:top-0 left-0 z-[999] w-full sm:h-full flex justify-center bg-black bg-opacity-40 backdrop-filter sm:px-4 '>
+    <div className='fixed top-[6rem] max-h-full h-full items-stretch sm:items-center sm:top-0 left-0 z-[999] w-full sm:h-full flex justify-center bg-black bg-opacity-40 sm:px-4'>
       {showCopiedAlert && (
         <div className='fixed bottom-8 -translate-x-1/2 z-50 bg-hellishDark text-white px-6 py-3 rounded-full shadow-lg animate-fadeInOut text-sm font-medium tracking-wide'>
           ✅ Link Copied to Clipboard
         </div>
       )}
-      <div className=' max-h-full  h-auto items-stretch bg-white rounded-t-3xl sm:rounded-3xl max-w-full w-auto p-8 flex flex-col gap-4 relative shadow-xl sm:max-w-[540px]'>
+
+      <div className='max-h-full h-auto items-stretch bg-white rounded-t-3xl sm:rounded-3xl max-w-full w-auto p-8 flex flex-col gap-4 relative shadow-xl sm:max-w-[540px]'>
         {/* Topbar */}
         <div className='relative flex items-center justify-center w-full pt-1 pb-5 sm:pt-4 sm:pb-8'>
           <span className='font-semibold text-[16px] text-black absolute left-1/2 transform -translate-x-1/2'>
-            Share Shadowlink
+            Share {link?.name || "Shadowlink"}
           </span>
           <button
             onClick={onClose}
@@ -83,21 +92,30 @@ const SharePopup = ({ onClose, onCopyLink }) => {
           </button>
         </div>
 
-        {/* Profile Preview Box */}
-        <div className='bg-hellishLight rounded-[2.4rem] flex flex-col justify-center items-center gap-1 py-3 sm:py-10  sm:mx-[5px] w-full'>
-          <img
-            src={Pfp}
-            alt='pfp'
-            className='w-[96px] h-[96px] rounded-full object-cover'
-          />
-          <span className='font-bold text-hellishText text-[24px] pt-2 sm:pt-10'>
-            yashpluto
-          </span>
-          <div className='flex items-center gap-1 text-[16px] text-hellishText opacity-80 pb-4 sm:pb-0'>
-            <img src={LinkIcon} className='w-4 h-4 invert opacity-60' />
-            <span>/yashpluto</span>
+        {/* Minimal Link Preview OR Full Avatar */}
+        {minimal && link ? (
+          <div className='bg-hellishLight rounded-[1.6rem] text-center flex flex-col gap-1 py-5 px-4'>
+            <span className='text-[18px] font-semibold'>
+              {link.name} • {link.username}
+            </span>
+            <span className='text-sm text-gray-600 break-all'>{link.url}</span>
           </div>
-        </div>
+        ) : (
+          <div className='bg-hellishLight rounded-[2.4rem] flex flex-col justify-center items-center gap-1 py-3 sm:py-10 sm:mx-[5px] w-full'>
+            <img
+              src={Pfp}
+              alt='pfp'
+              className='w-[96px] h-[96px] rounded-full object-cover'
+            />
+            <span className='font-bold text-hellishText text-[24px] pt-2 sm:pt-10'>
+              yashpluto
+            </span>
+            <div className='flex items-center gap-1 text-[16px] text-hellishText opacity-80 pb-4 sm:pb-0'>
+              <img src={LinkIcon} className='w-4 h-4 invert opacity-60' />
+              <span>/yashpluto</span>
+            </div>
+          </div>
+        )}
 
         {/* Scrollable Button Row */}
         <div className='flex overflow-x-auto gap-4 sm:pl-3 sm:pb-5 sm:py-8'>
@@ -117,10 +135,6 @@ const SharePopup = ({ onClose, onCopyLink }) => {
             </div>
           ))}
         </div>
-
-        {/* Divider */}
-        <div className='w-full h-[1px] bg-black opacity-20' />
-
         {/* Promo Text */}
         <div className='text-left text-black text-[16px] flex flex-col gap-1'>
           <span className='font-semibold'>Join yashpluto on Shadowlinks</span>
