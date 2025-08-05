@@ -13,7 +13,6 @@ import VimeoIcon from "../assets/SVGIcons/vimeo.svg";
 import TwitterIcon from "../assets/SVGIcons/x.svg";
 import YouTubeIcon from "../assets/SVGIcons/youtube.svg";
 import WebsiteIcon from "../assets/SVGIcons/website.svg";
-import { use } from "react";
 
 export const socialLinks = [
   {
