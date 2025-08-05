@@ -13,18 +13,21 @@ import VimeoIcon from "../assets/SVGIcons/vimeo.svg";
 import TwitterIcon from "../assets/SVGIcons/x.svg";
 import YouTubeIcon from "../assets/SVGIcons/youtube.svg";
 import WebsiteIcon from "../assets/SVGIcons/website.svg";
+import { use } from "react";
 
 export const socialLinks = [
   {
     id: 1,
     name: "Discord",
-    url: "https://discord.com/users/sh1garo",
+    username: "sh1garo",
+    url: "https://discord.com/users/1284436492860653629",
     icon: DiscordIcon,
     show: true,
   },
   {
     id: 2,
     name: "GitHub",
+    username: "Yash-pluto",
     url: "https://github.com/Yash-pluto",
     icon: GitHubIcon,
     show: true,
@@ -32,6 +35,7 @@ export const socialLinks = [
   {
     id: 3,
     name: "Instagram",
+    username: "sh1garo",
     url: "https://instagram.com/sh1garo",
     icon: InstagramIcon,
     show: true,
@@ -39,6 +43,7 @@ export const socialLinks = [
   {
     id: 4,
     name: "LinkedIn",
+    username: "vardhan-yash3105",
     url: "https://linkedin.com/in/vardhan-yash3105",
     icon: LinkedInIcon,
     show: true,
@@ -46,6 +51,7 @@ export const socialLinks = [
   {
     id: 5,
     name: "Pinterest",
+    username: "",
     url: "https://pinterest.com/",
     icon: PinterestIcon,
     show: false,
@@ -53,6 +59,7 @@ export const socialLinks = [
   {
     id: 6,
     name: "Reddit",
+    username: "",
     url: "https://reddit.com/",
     icon: RedditIcon,
     show: false,
@@ -60,6 +67,7 @@ export const socialLinks = [
   {
     id: 7,
     name: "Snapchat",
+    username: "",
     url: "https://snapchat.com/add/",
     icon: SnapchatIcon,
     show: false,
@@ -67,6 +75,7 @@ export const socialLinks = [
   {
     id: 8,
     name: "SoundCloud",
+    username: "",
     url: "https://soundcloud.com/",
     icon: SoundCloudIcon,
     show: false,
@@ -74,6 +83,7 @@ export const socialLinks = [
   {
     id: 9,
     name: "Spotify",
+    username: "ash<3",
     url: "https://open.spotify.com/user/31gjp3c2krluupxi2gq57nqoj4gi?si=5a851625b37e46c4",
     icon: SpotifyIcon,
     show: true,
@@ -81,6 +91,7 @@ export const socialLinks = [
   {
     id: 10,
     name: "TikTok",
+    username: "",
     url: "https://tiktok.com/@",
     icon: TikTokIcon,
     show: false,
@@ -88,6 +99,7 @@ export const socialLinks = [
   {
     id: 11,
     name: "Twitch",
+    username: "",
     url: "https://twitch.tv/",
     icon: TwitchIcon,
     show: false,
@@ -95,6 +107,7 @@ export const socialLinks = [
   {
     id: 12,
     name: "Vimeo",
+    username: "",
     url: "https://vimeo.com/",
     icon: VimeoIcon,
     show: false,
@@ -102,6 +115,7 @@ export const socialLinks = [
   {
     id: 13,
     name: "X.com",
+    username: "YashPluto",
     url: "https://twitter.com/",
     icon: TwitterIcon,
     show: false,
@@ -109,6 +123,7 @@ export const socialLinks = [
   {
     id: 14,
     name: "YouTube",
+    username: "Yash Pluto",
     url: "https://youtube.com/",
     icon: YouTubeIcon,
     show: false,
@@ -116,8 +131,9 @@ export const socialLinks = [
   {
     id: 15,
     name: "Website",
-    url: "https://yashpluto.vercel.app/",
+    username: "Yash Vardhan",
+    url: "https://yash-pluto.vercel.app/",
     icon: WebsiteIcon,
-    show: false,
+    show: true,
   },
 ];
