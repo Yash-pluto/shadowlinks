@@ -131,7 +131,7 @@ export const socialLinks = [
     id: 15,
     name: "Website",
     username: "Yash Vardhan",
-    url: "https://yash-plutoo.vercel.app/",
+    url: "https://yashpluto.vercel.app",
     icon: WebsiteIcon,
     show: true,
   },
