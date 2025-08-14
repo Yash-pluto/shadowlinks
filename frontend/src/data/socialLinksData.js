@@ -34,8 +34,8 @@ export const socialLinks = [
   {
     id: 3,
     name: "Instagram",
-    username: "sh1garo",
-    url: "https://instagram.com/sh1garo",
+    username: "corpsehvn",
+    url: "https://instagram.com/corpsehvn",
     icon: InstagramIcon,
     show: true,
   },
